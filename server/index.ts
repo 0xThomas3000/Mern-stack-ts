@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
+import routes from "./routes";
 import "./config/database";
 
 // Middleware
@@ -15,9 +16,7 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 
 // Routes
-app.get("/", (req, res) => {
-  res.json({ msg: "Hello Tuan Ngo" });
-});
+app.use("/api", routes.authRouter);
 
 // server listenning
 const PORT = process.env.PORT || 5000;
