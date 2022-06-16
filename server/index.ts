@@ -5,7 +5,6 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import routes from "./routes";
-import "./config/database";
 
 // Middleware
 const app = express();
@@ -17,6 +16,9 @@ app.use(cookieParser());
 
 // Routes
 app.use("/api", routes.authRouter);
+
+// Database
+import "./config/database";
 
 // server listenning
 const PORT = process.env.PORT || 5000;
