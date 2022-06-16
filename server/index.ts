@@ -13,6 +13,11 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(cookieParser());
 
+// Routes
+app.get("/", (req, res) => {
+  res.json({ msg: "Hello Tuan Ngo" });
+});
+
 // server listenning
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
