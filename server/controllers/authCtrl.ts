@@ -71,6 +71,17 @@ const authCtrl = {
       return res.status(500).json({ msg: errMsg });
     }
   },
+  login: async (req: Request, res: Response) => {
+    try {
+      const { account, password } = req.body;
+
+      console.log(req.body);
+
+      res.json({ msg: "Login Success !" });
+    } catch (err: any) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 export default authCtrl;
