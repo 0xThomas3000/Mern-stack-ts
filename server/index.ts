@@ -1,10 +1,11 @@
 import dotenv from "dotenv";
 dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
-import routes from "./routes";
+import routes from "./routes/index";
 
 // Middleware
 const app = express();
