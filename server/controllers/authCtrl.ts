@@ -39,6 +39,20 @@ const authCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+  activeAccount: async (req: Request, res: Response) => {
+    try {
+      const { active_token } = req.body;
+
+      const decoded = jwt.verify(
+        active_token,
+        `${process.env.ACTIVE_TOKEN_SECRET}`
+      );
+
+      console.log(decoded);
+    } catch (err: any) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 export default authCtrl;
