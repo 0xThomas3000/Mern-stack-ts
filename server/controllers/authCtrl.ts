@@ -65,11 +65,16 @@ const authCtrl = {
     } catch (err: any) {
       let errMsg;
 
-      if (err.code === 11000) {
-        errMsg = Object.keys(err.keyValue)[0] + " already exists.";
+      if (!err.code) {
+        errMsg =
+          err.message + " at: " + new Date(err.expiredAt).toLocaleString();
       } else {
-        let name = Object.keys(err.errors)[0];
-        errMsg = err.errors[`${name}`].message;
+        if (err.code === 11000) {
+          errMsg = Object.keys(err.keyValue)[0] + " already exists.";
+        } else {
+          let name = Object.keys(err.errors)[0];
+          errMsg = err.errors[`${name}`].message;
+        }
       }
 
       return res.status(500).json({ msg: errMsg });
