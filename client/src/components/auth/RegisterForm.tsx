@@ -26,7 +26,7 @@ const RegisterForm = () => {
 
   const handleSubmit = (e: FormSubmit) => {
     e.preventDefault();
-    dispatch<any>(register(userRegister)); // or "register(userRegister) as any"
+    dispatch<any>(register(userRegister)); // Or use "register(userRegister) as string"
   };
 
   return (

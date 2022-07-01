@@ -13,14 +13,8 @@ export const login =
       dispatch({ type: ALERT, payload: { loading: true } });
 
       const res = await postAPI("login", userLogin);
-
-      dispatch({
-        type: AUTH,
-        payload: {
-          token: res.data.access_token,
-          user: res.data.user,
-        },
-      });
+      console.log(res); // Console.log for Redux debug
+      dispatch({ type: AUTH, payload: res.data });
 
       dispatch({ type: ALERT, payload: { success: res.data.msg } });
     } catch (err: any) {

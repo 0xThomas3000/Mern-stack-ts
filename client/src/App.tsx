@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import PageRender from "./PageRender";
 import Header from "./components/global/Header";
 import Footer from "./components/global/Footer";
 
-import Alert from "./components/alert/Alert";
+import { Alert } from "./components/alert/Alert";
 
 const App = () => {
   return (
