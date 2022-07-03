@@ -12,12 +12,12 @@ const SocialLogin = () => {
 
   const onSuccess = (credentialResponse: any) => {
     const id_token = credentialResponse.credential;
-    dispatch(googleLogin(id_token));
+    dispatch<any>(googleLogin(id_token));
   };
 
   const onFBSuccess = (credentialResponse: any) => {
     const { accessToken, userID } = credentialResponse;
-    dispatch(facebookLogin(accessToken, userID));
+    dispatch<any>(facebookLogin(accessToken, userID));
   };
 
   return (
@@ -32,7 +32,7 @@ const SocialLogin = () => {
       </div>
       <div className="my-3">
         <FacebookLogin
-          className="d-flex align-items-center btn btn-outline-primary"
+          className="d-flex align-items-center btn btn-outline-primary p-1"
           appId="564806318457135"
           onSuccess={onFBSuccess}
           style={{
