@@ -53,6 +53,7 @@ const authCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   activeAccount: async (req: Request, res: Response) => {
     try {
       const { active_token } = req.body;
@@ -78,6 +79,7 @@ const authCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   login: async (req: Request, res: Response) => {
     try {
       const { account, password } = req.body;
@@ -92,6 +94,7 @@ const authCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   logout: async (req: Request, res: Response) => {
     try {
       res.clearCookie("refreshtoken", { path: `/api/refresh_token` });
@@ -100,6 +103,7 @@ const authCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   refreshToken: async (req: Request, res: Response) => {
     try {
       const rf_token = req.cookies.refreshtoken;
@@ -122,6 +126,7 @@ const authCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   googleLogin: async (req: Request, res: Response) => {
     try {
       const { id_token } = req.body;
@@ -158,12 +163,13 @@ const authCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   facebookLogin: async (req: Request, res: Response) => {
     try {
       const { accessToken, userID } = req.body;
 
       const URL = `
-        https://graph.facebook.com/v3.0/${userID}/?fields=id,name,email,picture&access_token=${accessToken}
+        https://graph.facebook.com/v14.0/${userID}/?fields=id,name,email,picture&access_token=${accessToken}
       `;
 
       const data = await fetch(URL)
@@ -195,6 +201,7 @@ const authCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   loginSMS: async (req: Request, res: Response) => {
     try {
       const { phone } = req.body;
@@ -204,6 +211,7 @@ const authCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   smsVerify: async (req: Request, res: Response) => {
     try {
       const { phone, code } = req.body;
